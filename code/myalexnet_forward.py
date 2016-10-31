@@ -36,7 +36,7 @@ class AlexNet:
         #         .fc(4096, name='fc7')
         #         .fc(1000, relu=False, name='fc8')
         #         .softmax(name='prob'))
-        self.net_data = load("../models/bvlc_alexnet.npy").item()
+        self.net_data = load(weights_path).item()
 
         self.define_graph()
 

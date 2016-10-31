@@ -8,7 +8,7 @@ from myalexnet_forward import AlexNet
 import constants as c
 
 
-def run(vid_range):
+def run(vid_range, weights_path):
     ##
     # Setup
     ##
@@ -16,7 +16,7 @@ def run(vid_range):
     sess = tf.Session()
 
     print 'Init model...'
-    model = AlexNet()
+    model = AlexNet(weights_path)
 
     print 'Init variables...'
     sess.run(tf.initialize_all_variables())
@@ -39,8 +39,9 @@ def run(vid_range):
 def usage():
     print 'Options:'
     print '-d/--data_dir= <directory/of/video/data/>'
-    print '-r/--range=    "start_vid end_vid" (Range of videos to classify. If not specified, ' \
+    print '-r/--range=    <"start_vid end_vid"> (Range of videos to classify. If not specified, ' \
                           'defaults to all videos.)'
+    print '-w/--weights=  <path/to/pretrained/weights.npy>'
 
 def handle_input():
     ##
@@ -48,9 +49,10 @@ def handle_input():
     ##
 
     vid_range = None
+    weights_path = '../models/bvlc_alexnet.npy'
 
     try:
-        opts, _ = getopt.getopt(sys.argv[1:], 'd:r:O', ['data_dir=', 'range=', 'overwrite'])
+        opts, _ = getopt.getopt(sys.argv[1:], 'd:r:w:', ['data_dir=', 'range=', 'weights='])
     except getopt.GetoptError:
         usage()
         sys.exit(2)
@@ -63,12 +65,14 @@ def handle_input():
             assert len(endpoints) == 2
             start, end = int(endpoints[0]), int(endpoints[1])
             vid_range = xrange(start, end)
+        if opt in ('-w', '--weights'):
+            weights_path = arg
 
-    return vid_range
+    return vid_range, weights_path
 
 def main():
-    vid_range = handle_input()
-    run(vid_range)
+    vid_range, weights_path = handle_input()
+    run(vid_range, weights_path)
 
 if __name__ == '__main__':
     main()
