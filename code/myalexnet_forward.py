@@ -41,10 +41,13 @@ class AlexNet:
         self.define_graph()
 
     def define_graph(self):
+        """
+        Setup the AlexNet architecture and calculations.
+        """
         def conv(input, kernel, biases, k_h, k_w, c_o, s_h, s_w, padding="VALID", group=1):
-            '''
+            """
             From https://github.com/ethereon/caffe-tensorflow
-            '''
+            """
             c_i = input.get_shape()[-1]
             assert c_i % group == 0
             assert c_o % group == 0
@@ -201,6 +204,13 @@ class AlexNet:
 
 
     def get_preds(self, sess, vid_path):
+        """
+        Classify all frames in the given video and output to CSV.
+
+        :param sess: The TensorFlow Session.
+        :param vid_path: The relative path to the mp4 file to be classified.
+        """
+
         print '-' * 30
         print 'Classifying %s' % vid_path
 
@@ -239,8 +249,10 @@ class AlexNet:
             print 'Batch %d' % i
 
             run_start = time()
+
             top_5_preds = sess.run(tf.nn.top_k(self.probs, k=5),
                                    feed_dict={self.input_frames: batch})
+
             run_time = time() - run_start
             run_fps = len(batch) / run_time
             print 'Forward pass fps: %f' % run_fps

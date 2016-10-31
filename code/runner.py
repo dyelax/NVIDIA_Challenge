@@ -9,6 +9,13 @@ import constants as c
 
 
 def run(vid_range, weights_path):
+    """
+    Run a classification network on videos in vid_range.
+
+    :param vid_range: The range of videos to classify. Applied to the sorted list of videos in
+                      c.DATA_DIR.
+    :param weights_path: The path to the pretrained network weights.
+    """
     ##
     # Setup
     ##
@@ -41,7 +48,7 @@ def usage():
     print '-d/--data_dir= <directory/of/video/data/>'
     print '-r/--range=    <"start_vid end_vid"> (Range of videos to classify. If not specified, ' \
                           'defaults to all videos.)'
-    print '-w/--weights=  <path/to/pretrained/weights.npy>'
+    print '-w/--weights=  <path/to/pretrained/weights.npy> (Default = ../models/bvlc_alexnet.npy).'
 
 def handle_input():
     ##
