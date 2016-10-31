@@ -21,7 +21,7 @@ from utils import gen_epoch
 import constants as c
 
 class AlexNet:
-    def __init__(self):
+    def __init__(self, weights_path):
         # (self.feed('data')
         #         .conv(11, 11, 96, 4, 4, padding='VALID', name='conv1')
         #         .lrn(2, 2e-05, 0.75, name='norm1')
@@ -210,7 +210,7 @@ class AlexNet:
 
         # get path
         vid_name = os.path.basename(vid_path)[:-4]
-        csv_path = os.path.join('../save/', vid_name + '.csv')
+        csv_path = os.path.join(c.SAVE_DIR, vid_name + '.csv')
 
         # write header
         with open(csv_path, 'wb') as f:
