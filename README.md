@@ -6,9 +6,9 @@ Coding challenge for 2017 NVIDIA Deep Learning internship
 2. Place mp4 files to be classified in the `data/` directory. Feel free to keep or delete the test videos already there.
 3. Run the classifier by executing `python runner.py` with the following options
 
-    -d/--data_dir= <directory/of/video/data/>
-    -r/--range=    <"start_vid_# end_vid_#"> (Range of videos to classify. If not specified, defaults to all videos.)
-    -w/--weights=  <path/to/pretrained/weights.npy> (Default = ../models/bvlc_alexnet.npy).
+        -d/--data_dir= <directory/of/video/data/>
+        -r/--range=    <"start_vid_# end_vid_#"> (Range of videos to classify. If not specified, defaults to all videos.)
+        -w/--weights=  <path/to/pretrained/weights.npy> (Default = ../models/bvlc_alexnet.npy).
     
 4. Results of the classification will be saved in csv files in the `save/` directory.
 
