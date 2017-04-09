@@ -1,5 +1,5 @@
 # NVIDIA Challenge
-Coding challenge implementation for my Spring 2017 NVIDIA deep learning internship. The task was to build a video classification pipeline using TensorFlow and output the object classification of each frame as a CSV.
+Coding challenge implementation for my Spring 2017 NVIDIA deep learning internship. The task was to build a video classification pipeline using TensorFlow and output the object classification of each frame to a CSV.
 
 ## Usage:
 1. Download AlexNet weights from this link: http://www.cs.toronto.edu/~guerzhoy/tf_alexnet/bvlc_alexnet.npy.
